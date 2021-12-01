@@ -1,21 +1,10 @@
-[![Tests](https://github.com/geosolutions-it/ckanext-geosolutions-ui/workflows/Tests/badge.svg?branch=main)](https://github.com/geosolutions-it/ckanext-geosolutions-ui/actions)
+[![Tests](https://github.com/geosolutions-it/ckanext-adbpo/workflows/Tests/badge.svg?branch=main)](https://github.com/geosolutions-it/ckanext-adbpo/actions)
 
-# ckanext-geosolutions-ui
-**CKAN geosolution-ui** is a open-source template, to make easy the publish and development of Ckan frontend.
+# ckanext-adbpo
 
-**Built With:**
+L&F templates for ADBPo custom UI.
 
-[Jinja2](https://jinja.palletsprojects.com/en/2.11.x/)
-
-[Bootstrap](https://getbootstrap.com/docs/3.3/)
-
-[Less](http://lesscss.org/)
-
-
-
-![Ckan geosolution-ui Home page](./ckanext/geosolutions_ui/assets/screenshot/home_ckan_geosolution-ui.jpg)
-
-![Ckan geosolution-ui Dataset page](./ckanext/geosolutions_ui/assets/screenshot/dataset_ckan_geosolution-ui.jpg)
+Based on [ckanext-geosolutions-ui](https://github.com/geosolutions-it/ckanext-geosolutions-ui/tree/0cc7733cb8493e62189b48fba1ab555c8aa88e23)
 
 ## Installation
 
@@ -27,12 +16,12 @@
     ```
 2. Clone the source and install it on the virtualenv
     ```
-    git clone https://github.com/geosolutions-it/ckanext-geosolutions-ui.git
-    cd ckanext-geosolutions-ui
-    pip install -e .
+    git clone https://github.com/geosolutions-it/adbpo.git
+    cd ckanext-adbpo
 	pip install -r requirements.txt
+    pip install -e .
     ```
-3. Add `geosolutions-ui` to the `ckan.plugins` setting in your CKAN
+3. Add `adbpo-ui` to the `ckan.plugins` setting in your CKAN
 
     ```
     vim /etc/ckan/default/ckan.ini
@@ -48,10 +37,10 @@
 #### ckan docker setup
 - install a ckan instance locally with docker (steps from ckan documentation https://docs.ckan.org/en/2.9/maintaining/installing/install-from-docker-compose.html)
 #### add an extension inside docker of ckan
-1. clone the geosolutions-ui extension repository
+1. clone the adbpo extension repository
     ```
     cd /path/to/my/projects
-    git clone --recursive https://github.com/geosolutions-it/ckanext-geosolutions-ui.git
+    git clone --recursive https://github.com/geosolutions-it/ckanext-adbpo.git
 
     ```
 2. to link ckan extension to ckan, create a file docker-compose.override.yml in /ckan/contrib/docker with the following code
@@ -67,7 +56,7 @@
     services:
     ckan:
         volumes:
-        - '../../../ckanext-geosolutions-ui:/usr/lib/ckan/venv/src/ckanext-geosolutions-ui'
+        - '../../../ckanext-adbpo:/usr/lib/ckan/venv/src/ckanext-adbpo'
 
     ```
 4. stop & start up the application
@@ -94,7 +83,7 @@
 
     ```
     #this command have to run inside docker
-    cd ckanext-geosolutions-ui
+    cd ckanext-adbpo
     pip install -e .
     ```
 9. install ckan dev requirements
@@ -117,7 +106,7 @@
     debug = true
     ....
 
-    ckan.plugins = stats text_view image_view recline_view geosolutions_ui
+    ckan.plugins = stats text_view image_view recline_view adbpo_ui
     ```
 3. detach from docker container bash shell and restart ckan docker
 
@@ -128,7 +117,7 @@
 
 - inside Frontend directory
     ```
-    cd ckanext-geosolutions-ui/ckanext/geosolutions_ui/
+    cd ckanext-adbpo/ckanext/adbpo/
     ```
 - folder tree
     ```
@@ -215,8 +204,8 @@ or change the logo var in
 
     ```
         {% set logo = '/base/img/logo.png' %}
-        {% set domain = 'https://www.geosolutionsgroup.com/' %}
-        {% set customer = 'About GeoSolutions' %}
+        {% set domain = 'https://adbpo.gov.it/' %}
+        {% set customer = 'About ADBPo' %}
         {% set landingPage = 'about' %}
         {% set powerdByDomain = 'https://www.geosolutionsgroup.com/' %}
         {% set powerdBy = 'GeoSolutions' %}
@@ -235,37 +224,6 @@ To run the tests, do:
     pytest --ckan-ini=test.ini
     ```
 
-## Releasing a new version of ckanext-geosolutions-ui
-
-If ckanext-geosolutions-ui should be available on PyPI you can follow these steps to publish a new version:
-
-1. Update the version number in the `setup.py` file. See [PEP 440](http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers) for how to choose version numbers.
-
-2. Make sure you have the latest version of necessary packages:
-
-    pip install --upgrade setuptools wheel twine
-
-3. Create a source and binary distributions of the new version:
-
-       python setup.py sdist bdist_wheel && twine check dist/*
-
-   Fix any errors you get.
-
-4. Upload the source distribution to PyPI:
-
-       twine upload dist/*
-
-5. Commit any outstanding changes:
-
-       git commit -a
-       git push
-
-6. Tag the new release of the project on GitHub with the version number from
-   the `setup.py` file. For example if the version number in `setup.py` is
-   0.0.1 then do:
-
-       git tag 0.0.1
-       git push --tags
 
 ## License
 

@@ -11,19 +11,19 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-geosolutions-ui''',
+    name='''ckanext-adbpo''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.0.1',
 
-    description='''Base L&F extension''',
+    description='''ADBpo L&F extension''',
     long_description=long_description,
     long_description_content_type="text/markdown",
 
     # The project's main homepage.
-    url='https://github.com/geosolutions-it/ckanext-geosolutions-ui',
+    url='https://github.com/geosolutions-it/ckanext-adbpo',
 
     # Author details
     author='''Emanuele Tajariol''',
@@ -50,7 +50,7 @@ setup(
 
 
     # What does your project relate to?
-    keywords='''CKAN geosolutions GUI Look&Feel''',
+    keywords='''CKAN geosolutions GUI Look&Feel adbpo''',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -84,7 +84,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        geosolutions_ui=ckanext.geosolutions_ui.plugin:GeosolutionsUiPlugin
+        adbpo_ui=ckanext.adbpo.plugin:ADBPoUiPlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
